@@ -52,7 +52,7 @@ IS_FLAG_P=false
 IS_FLAG_Z=false
 
 # STOCK_SEARCH_DIR="${HOME}/.stock-jp"
-STOCK_SEARCH_DIR="${SELF}/data/"
+STOCK_SEARCH_DIR="data/"
 STOCK_DATA_FILE="stock.csv"
 
 
@@ -86,6 +86,7 @@ function _jp_stock_search() {
             echo "日経（適時開示）"
         } | peco )
 
+    } && [ ! -z ${site} ] && {
         local url=''
         case ${site} in
             "Yahoo! Finance" )
@@ -119,11 +120,10 @@ function _jp_stock_search() {
 
 
 function _main() {
-    mkdir -p ${STOCK_SEARCH_DIR}
-    [ ! type peco ] && {
+    if ! type peco > /dev/null 2>&1; then
         echo "need peco."
         exit 1
-    }
+    fi
     _jp_stock_search
 }
 
