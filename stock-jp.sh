@@ -52,7 +52,7 @@ IS_FLAG_P=false
 IS_FLAG_Z=false
 
 # STOCK_SEARCH_DIR="${HOME}/.stock-jp"
-STOCK_SEARCH_DIR="data/"
+STOCK_SEARCH_DIR="${SELF}/data/"
 STOCK_DATA_FILE="stock.csv"
 
 
