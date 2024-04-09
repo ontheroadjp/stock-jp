@@ -52,12 +52,11 @@ IS_FLAG_P=false
 IS_FLAG_Z=false
 
 # STOCK_SEARCH_DIR="${HOME}/.stock-jp"
-STOCK_SEARCH_DIR="data/"
+STOCK_SEARCH_DIR="${SELF}/data/"
 STOCK_DATA_FILE="stock.csv"
 
 
 function _download_stock_data() {
-    mkdir -p ${STOCK_SEARCH_DIR}
     url='https://www.jpx.co.jp/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_j.xls'
     curl ${url} -o ${STOCK_SEARCH_DIR}/stock.xls && {
         echo 'updated!'
@@ -124,6 +123,7 @@ function _main() {
         echo "need peco."
         exit 1
     fi
+    mkdir -p ${STOCK_SEARCH_DIR}
     _jp_stock_search
 }
 
